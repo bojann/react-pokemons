@@ -1,0 +1,18 @@
+.list-group .list-group-item {
+  width: 200px;
+  text-align: center;
+  display: inline-block;
+  margin: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  
+  &:hover {
+    background: #e2e88f;
+  }
+  
+  &__poke-item {
+    color: #3d3d3d;
+    width: 100%;
+    font-size: 2rem;
+  }  
+}

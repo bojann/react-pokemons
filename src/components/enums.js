@@ -1,3 +1,3 @@
 export const POKEMON_API = {
-  POKEMONS_PATH: 'pokemon'
-}
+  POKEMONS_PATH: "pokemon"
+};
