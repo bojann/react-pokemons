@@ -1,3 +1,11 @@
-.sign-in {
-  font-size: 2rem;
+.login-container {
+  
+  &-form {
+    font-size: 2rem;
+    background-color: #3d3d3d;
+    color: #fff;
+    text-align: center;
+    padding: 30px;
+    margin-top: 40px;
+  }
 }

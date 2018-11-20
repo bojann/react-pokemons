@@ -2,7 +2,7 @@ import React from "react";
 
 import "./SearchInput.scss";
 
-export default function SearchInput({pokeSearch, handleChangeSearch}) {
+export default function SearchInput({ pokeSearch, handleChangeSearch }) {
   return (
     <div className="search-input">
       <label htmlFor="searchItem">

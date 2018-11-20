@@ -1,0 +1,15 @@
+.poke-toolbar-features {
+  display: inline-block;
+  width: auto;
+  
+  &__item-info {
+    display: inline-block;
+    font-size: 18px;
+    white-space: nowrap;
+    padding: 5px 20px;
+    color: #d2a657;
+  }
+  &__compare-btn {
+    display: inline-block;
+  }
+}
