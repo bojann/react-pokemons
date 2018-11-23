@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import { ListGroupItem } from "react-bootstrap";
 import { Link } from "@reach/router";
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 
 import AddItemButton from "components/pokeapi/pokebuttons/AddItemButton";
 import RemoveItemButton from "components/pokeapi/pokebuttons/RemoveItemButton";
@@ -13,13 +13,17 @@ class PokeItems extends PureComponent {
     return name.substring(0, LIMIT_LENGTH - 3) + "...";
   };
 
-  renderPokeList = () => {
+  componedDidUpdate(s, p) {}
+
+  renderPokeList = () => {};
+
+  render() {
     const {
       selectMultiplePokemonFlag,
       handleMultiSelectPoke,
-      pokemons,
+      pokemons
     } = this.props;
-    
+
     return pokemons.map(pokemon => {
       return selectMultiplePokemonFlag ? (
         <ListGroupItem key={pokemon.url}>
@@ -51,17 +55,13 @@ class PokeItems extends PureComponent {
         </Link>
       );
     });
-  };
-
-  render() {
-    return this.renderPokeList();
   }
 }
 
 PokeItems.propTypes = {
   handleMultiSelectPoke: PropTypes.func,
   selectMultiplePokemonFlag: PropTypes.bool,
-  pokemons: PropTypes.array,
-}
+  pokemons: PropTypes.array
+};
 
-export default PokeItems
+export default PokeItems;

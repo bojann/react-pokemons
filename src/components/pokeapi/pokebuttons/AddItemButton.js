@@ -1,7 +1,7 @@
 import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 
-import CustomButton from "components/pokeapi/pokebuttons/CustomButton";
+import CustomButton from "components/shared/buttons/CustomButton";
 
 class ButtonAddItem extends PureComponent {
   state = {
@@ -13,7 +13,7 @@ class ButtonAddItem extends PureComponent {
   render() {
     const dataIdName = this.props["data-idname"];
     const isDisabled = this.props.selectMultiplePokemonFlag ? false : true;
-    const handleClickEvent = this.props.handleMultiSelectPoke
+    const handleClickEvent = this.props.handleMultiSelectPoke;
 
     return (
       <CustomButton

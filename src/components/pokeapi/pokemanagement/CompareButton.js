@@ -1,18 +1,23 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import CustomButton from "components/pokeapi/pokebuttons/CustomButton";
+import CustomButton from "components/shared/buttons/CustomButton";
+import { POKE_MAX_ITEM_LIMIT } from "components/enums";
 
-import "./PokeCompare.scss";
+import "./CompareButton.scss";
 
-const PokeCompare = props => {
+const CompareButton = props => {
   const itemStatusLength = props.selectedItems.length;
   const isDisabled = props.selectMultiplePokemonFlag ? false : true;
-  
+
   return props.selectMultiplePokemonFlag ? (
     <div className="poke-toolbar-features">
       <div className="poke-toolbar-features__item-info">
-        <span>{itemStatusLength ? `*Selected items ${itemStatusLength}/5` : `*Selected items 0/5`}</span>
+        <span>
+          {itemStatusLength
+            ? `*Selected items ${itemStatusLength}/${POKE_MAX_ITEM_LIMIT}`
+            : `*Selected items 0/${POKE_MAX_ITEM_LIMIT}`}
+        </span>
       </div>
       <div className="poke-toolbar-features__compare-btn">
         <CustomButton
@@ -26,7 +31,7 @@ const PokeCompare = props => {
   ) : null;
 };
 
-PokeCompare.propTypes = {
+CompareButton.propTypes = {
   selectedItems: PropTypes.array,
   handleClickBtnCompare: PropTypes.func,
   selectMultiplePokemonFlag: PropTypes.oneOfType([
@@ -35,4 +40,4 @@ PokeCompare.propTypes = {
   ])
 };
 
-export default PokeCompare;
+export default CompareButton;

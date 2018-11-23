@@ -1,27 +1,29 @@
-import React from "react";
+import React, { PureComponent } from "react";
 import PropTypes from "prop-types";
 
-import PokeMultipleSelect from "components/pokeapi/pokemanagement/PokeMultipleSelect";
-import PokeCompare from "components/pokeapi/pokemanagement/PokeCompare";
+import MultipleSelectButton from "components/pokeapi/pokemanagement/MultipleSelectButton";
+import CompareButton from "components/pokeapi/pokemanagement/CompareButton";
 
 import "./PokeToolbar.scss";
 
-const PokeToolbar = props => {
-  return (
-    <div className="poke-toolbar">
-      <PokeMultipleSelect
-        handleChangeCheckbox={props.handleChangeCheckbox}
-        getItemStatus={props.getItemStatus}
-        handleClickBtnCompare={props.handleClickBtnCompare}
-      />
-      <PokeCompare
-        selectedItems={props.selectedItems}
-        handleClickBtnCompare={props.handleClickBtnCompare}
-        selectMultiplePokemonFlag={props.selectMultiplePokemonFlag}
-      />
-    </div>
-  );
-};
+class PokeToolbar extends PureComponent {
+  render() {
+    return (
+      <div className="poke-toolbar">
+        <MultipleSelectButton
+          handleChangeCheckbox={this.props.handleChangeCheckbox}
+          getItemStatus={this.props.getItemStatus}
+          handleClickBtnCompare={this.props.handleClickBtnCompare}
+        />
+        <CompareButton
+          selectedItems={this.props.selectedItems}
+          handleClickBtnCompare={this.props.handleClickBtnCompare}
+          selectMultiplePokemonFlag={this.props.selectMultiplePokemonFlag}
+        />
+      </div>
+    );
+  }
+}
 
 PokeToolbar.propTypes = {
   handleChangeCheckbox: PropTypes.func,

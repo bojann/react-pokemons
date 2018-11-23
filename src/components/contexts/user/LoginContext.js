@@ -12,6 +12,21 @@ export const LoginContext = React.createContext({
 });
 
 export class LoginContextProvider extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      user: "",
+      passw: "",
+      isUserLogged: false,
+      handleSubmitForm: this.handleSubmitForm,
+      handleChangeUser: this.handleChangeUser,
+      handleChangePassw: this.handleChangePassw,
+      validateForm: this.validateForm,
+      handleSignOut: this.handleSignOut
+    };
+  }
+
   validateForm = () => {
     return this.state.user && this.state.passw;
   };
@@ -57,17 +72,6 @@ export class LoginContextProvider extends Component {
         navigate("/login");
       }
     );
-  };
-
-  state = {
-    user: "",
-    passw: "",
-    isUserLogged: false,
-    handleSubmitForm: this.handleSubmitForm,
-    handleChangeUser: this.handleChangeUser,
-    handleChangePassw: this.handleChangePassw,
-    validateForm: this.validateForm,
-    handleSignOut: this.handleSignOut
   };
 
   render() {

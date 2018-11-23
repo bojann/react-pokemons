@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "@reach/router";
-import { Button } from "react-bootstrap";
 
-import withAuth from "components/user/withAuth";
+import withAuth from "components/contexts/user/withAuth";
+import CustomButton from "components/shared/buttons/CustomButton";
 
 import "./Navigation.scss";
 
@@ -15,9 +15,14 @@ class Navigation extends Component {
         <Link to="pokemons">Pokemons</Link>
         <Link to="blizzard">World of Warcraft</Link>
         <Link to="login">
-          <Button bsStyle="warning" onClick={handleSignOut}>
+          <CustomButton
+            bsStyle="warning"
+            onClick={handleSignOut}
+            isVisible={true}
+            isDisabled={false}
+          >
             {isUserLogged ? "Sign Out" : "Login"}
-          </Button>
+          </CustomButton>
         </Link>
       </nav>
     );

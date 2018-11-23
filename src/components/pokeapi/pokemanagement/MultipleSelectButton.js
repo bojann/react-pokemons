@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import "./PokeMultipleSelect.scss";
+import "./MultipleSelectButton.scss";
 
-const PokeMultipleSelect = props => {
+const MultipleSelectButton = props => {
   return (
     <div className="poke-checkbox">
       <input
@@ -16,8 +16,8 @@ const PokeMultipleSelect = props => {
   );
 };
 
-PokeMultipleSelect.propTypes = {
+MultipleSelectButton.propTypes = {
   handleChangeCheckbox: PropTypes.func
 };
 
-export default PokeMultipleSelect;
+export default MultipleSelectButton;

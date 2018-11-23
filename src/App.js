@@ -6,7 +6,9 @@ import BlizzardHome from "components/blizzardapi/BlizzardHome";
 import LoadingSpinner from "components/shared/widgets/LoadingSpinner";
 import Dashboard from "components/Dashboard";
 import Login from "components/user/Login";
-import { LoginContextProvider } from "components/user/LoginContext";
+import { LoginContextProvider } from "components/contexts/user/LoginContext";
+import { PokemonContextProvider } from "components/contexts/pokemons/PokemonContext";
+import NoMatchPage from "components/NoMatchPage";
 
 import "App.scss";
 
@@ -18,19 +20,27 @@ const LoadablePokeDetail = Loadable({
   loader: () => import("components/pokeapi/pokedetails/PokeDetail"),
   loading: () => <LoadingSpinner />
 });
+const LoadablePokeCompare = Loadable({
+  loader: () => import("components/pokeapi/pokecompare/PokeCompare"),
+  loading: () => <LoadingSpinner />
+});
 
 class App extends Component {
   render() {
     return (
       <LoginContextProvider>
-        <ReachRouter>
-          <Dashboard path="/">
-            <LoadablePokeHome path="pokemons" />
-            <LoadablePokeDetail path="pokemon/:id" />
-            <BlizzardHome path="blizzard" />
-          </Dashboard>
-          <Login path="login" />
-        </ReachRouter>
+        <PokemonContextProvider>
+          <ReachRouter>
+            <Dashboard path="/">
+              <LoadablePokeHome path="pokemons" />
+              <LoadablePokeDetail path="pokemon/:id" />
+              <LoadablePokeCompare path="pokemon/compare" />
+              <BlizzardHome path="blizzard" />
+              <NoMatchPage default />
+            </Dashboard>
+            <Login path="login" />
+          </ReachRouter>
+        </PokemonContextProvider>
       </LoginContextProvider>
     );
   }

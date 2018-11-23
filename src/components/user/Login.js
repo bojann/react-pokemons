@@ -6,10 +6,11 @@ import {
   Form,
   FormGroup,
   ControlLabel,
-  FormControl,
-  Button
+  FormControl
 } from "react-bootstrap/";
-import withAuth from "components/user/withAuth";
+
+import withAuth from "components/contexts/user/withAuth";
+import CustomButton from "components/shared/buttons/CustomButton";
 
 import "./Login.scss";
 
@@ -69,13 +70,13 @@ class Login extends Component {
 
               <FormGroup>
                 <Col>
-                  <Button
+                  <CustomButton
                     bsSize="large"
                     type="submit"
                     disabled={!validateForm()}
                   >
                     Sign in
-                  </Button>
+                  </CustomButton>
                 </Col>
               </FormGroup>
             </Form>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Table, Grid, Row, Col } from "react-bootstrap/lib/";
 import { has, map } from "lodash";
+import PropTypes from "prop-types";
 
 import { fetchPokeData } from "services/fetchData";
 
@@ -15,7 +16,18 @@ export default class PokeDetail extends Component {
   };
 
   componentDidMount() {
-    fetchPokeData({ selectedPoke: this.props.id }).then(response => {
+    const { pokemon } = this.props;
+    let pathName = "";
+
+    if (pokemon) {
+      pathName = pokemon;
+    } else if (this.props.id) {
+      pathName = this.props.id;
+    } else {
+      return false;
+    }
+
+    fetchPokeData({ selectedPoke: pathName }).then(response => {
       this.setState(() => {
         return {
           pokemon: response,
@@ -84,3 +96,7 @@ export default class PokeDetail extends Component {
     ) : null;
   }
 }
+
+PokeDetail.propTypes = {
+  id: PropTypes.string
+};

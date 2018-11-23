@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import CustomButton from "components/pokeapi/pokebuttons/CustomButton";
+import CustomButton from "components/shared/buttons/CustomButton";
 
 class RemoveItemButton extends Component {
   state = {
     className: "remove-button",
     bsStyle: "danger",
     bsSize: "small",
-    isDisabled: ""
+    isDisabled: true
   };
 
   handleClickBtnRemove = ev => {

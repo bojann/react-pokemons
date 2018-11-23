@@ -1,13 +1,18 @@
 import React, { PureComponent } from "react";
 import { debounce, filter } from "lodash";
+import { ListGroup } from "react-bootstrap";
+import PropTypes from "prop-types";
+// import axios from "axios";
+// import { navigate } from "@reach/router";
 
 import { fetchPokeData } from "services/fetchData";
-import { ListGroup } from "react-bootstrap/lib/";
 import PokeItems from "components/pokeapi/pokedashboard/PokeItems";
 import { POKEMON_API } from "components/enums";
 import SearchInput from "components/pokeapi/pokesearch/SearchInput";
-import withAuth from "components/user/withAuth";
+import withAuth from "components/contexts/user/withAuth";
 import PokeToolbar from "components/pokeapi/pokemanagement/PokeToolbar";
+// import { POKE_MAX_ITEM_LIMIT } from "components/enums";
+import withSelectedPokemons from "components/contexts/pokemons/withSelectedPokemons";
 
 import "./PokeHome.scss";
 
@@ -20,8 +25,7 @@ class PokeHome extends PureComponent {
     offset: 10,
     count: 0,
     pokeSearch: "",
-    selectMultiplePokemonFlag: false,
-    selectedItems: [],
+    selectMultiplePokemonFlag: false
   };
 
   debounceEvent(...args) {
@@ -66,12 +70,6 @@ class PokeHome extends PureComponent {
     });
   }
 
-  getItemStatus = () => {
-    const selectedItems = this.state.selectedItems;
-    
-   return selectedItems.length ? selectedItems : []
-  };
-
   componentDidMount() {
     this.getPokeData();
   }
@@ -94,44 +92,41 @@ class PokeHome extends PureComponent {
     this.getPokeData(selectedPoke);
   };
 
-  handleClickBtnCompare = (ev) => {
-    
-  };
-  
-  handleMultiSelectPoke = (_target) => {
-    this.setState((currentState) => {
-      return {
-        selectedItems: [...currentState.selectedItems, _target.dataset.idname]
-      }
-    })
-    
-    console.log("%c  BA :********* ","background: orange;", this.state.selectedItems);
-  }
-
   render() {
+    const {
+      handleClickBtnCompare,
+      handleMultiSelectPoke,
+      selectedItems
+    } = this.props;
+
     return (
-      <div>
+      <>
         <SearchInput
           pokeSearch={this.state.pokeSearch}
           handleChangeSearch={this.handleChangeSearch}
         />
         <PokeToolbar
           handleChangeCheckbox={this.handleChangeCheckbox}
-          selectedItems={this.state.selectedItems}
-          handleClickBtnCompare={this.handleClickBtnCompare}
+          selectedItems={selectedItems}
+          handleClickBtnCompare={handleClickBtnCompare}
           selectMultiplePokemonFlag={this.state.selectMultiplePokemonFlag}
         />
         <ListGroup>
           <PokeItems
-            handleMultiSelectPoke={(ev) => this.handleMultiSelectPoke(ev.target)}
+            handleMultiSelectPoke={handleMultiSelectPoke}
             selectMultiplePokemonFlag={this.state.selectMultiplePokemonFlag}
             pokemons={this.state.filteredPokeResponse}
             handleClickPokemon={this.handleClickPokemon}
           />
         </ListGroup>
-      </div>
+      </>
     );
   }
 }
 
-export default withAuth(PokeHome);
+PokeHome.propTypes = {
+  handleClickBtnCompare: PropTypes.func,
+  handleMultiSelectPoke: PropTypes.func
+};
+
+export default withAuth(withSelectedPokemons(PokeHome));

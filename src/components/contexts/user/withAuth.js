@@ -1,6 +1,6 @@
 import React from "react";
 
-import { LoginContext } from "components/user/LoginContext";
+import { LoginContext } from "components/contexts/user/LoginContext";
 
 const withAuth = ChildComponent => props => (
   <LoginContext.Consumer>

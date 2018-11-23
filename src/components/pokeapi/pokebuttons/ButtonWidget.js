@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import CustomButton from "components/pokeapi/pokebuttons/CustomButton";
+import CustomButton from "components/shared/buttons/CustomButton";
 
 class ButtonWidget extends Component {
   state = {
     btnName: "Add Item",
     bsStyle: "primary",
-    bsSize: "small"
+    bsSize: "small",
+    isVisible: false
   };
 
   componentDidMount() {

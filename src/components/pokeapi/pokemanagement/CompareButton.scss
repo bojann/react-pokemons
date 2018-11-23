@@ -1,6 +1,8 @@
 .poke-toolbar-features {
-  display: inline-block;
+  display: block;
   width: auto;
+  text-align: left;
+  margin-bottom: 10px;
   
   &__item-info {
     display: inline-block;

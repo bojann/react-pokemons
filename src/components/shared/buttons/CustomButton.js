@@ -13,6 +13,7 @@ const CustomButton = props => {
     handleClickEvent,
     bsStyle,
     isDisabled = true,
+    isVisible = true,
     ...rest
   } = props;
   const classNamesArr = className ? className.split(" ") : [];
@@ -20,7 +21,7 @@ const CustomButton = props => {
 
   const itemStyleClasses = classNames(
     BASE_CLASS,
-    isDisabled ? `${BASE_CLASS}--hidden` : `${BASE_CLASS}--visible`,
+    isVisible ? `${BASE_CLASS}--visible` : `${BASE_CLASS}--hidden`,
     classConcat
   );
 
@@ -29,6 +30,7 @@ const CustomButton = props => {
       className={itemStyleClasses}
       bsStyle={bsStyle}
       onClick={handleClickEvent}
+      disabled={isDisabled}
       {...rest}
     >
       {btnName ? btnName : props.children}
@@ -43,6 +45,7 @@ CustomButton.propTypes = {
   className: PropTypes.string,
   "data-idname": PropTypes.string,
   handleClickEvent: PropTypes.func,
+  isVisible: PropTypes.bool,
   isDisabled: PropTypes.oneOfType([PropTypes.string, PropTypes.bool])
 };
 
