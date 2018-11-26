@@ -13,7 +13,7 @@ class ButtonAddItem extends PureComponent {
   render() {
     const dataIdName = this.props["data-idname"];
     const isDisabled = this.props.selectMultiplePokemonFlag ? false : true;
-    const handleClickEvent = this.props.handleMultiSelectPoke;
+    const handleClickEvent = this.props.handleClickAddPokemon;
 
     return (
       <CustomButton

@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import { Table, Grid, Row, Col } from "react-bootstrap/lib/";
 import { has, map } from "lodash";
 import PropTypes from "prop-types";
+import {
+  CSSTransition,
+  TransitionGroup,
+} from 'react-transition-group';
 
 import { fetchPokeData } from "services/fetchData";
 
@@ -61,11 +65,19 @@ export default class PokeDetail extends Component {
         <Row className="show-grid">
           <Col xs={12} md={6}>
             <div className="carousel-pokedetail">
-              {this.state.photos.map((img, index) => {
-                return img ? (
-                  <img key={img} src={img} alt={`${pokemon.name}-${index}`} />
-                ) : null;
-              })}
+              <TransitionGroup>
+                {this.state.photos.map((img, index) => 
+                  (<CSSTransition
+                      key={img}
+                      timeout={500}
+                      classNames="item-fadein"
+                  >
+                    {img
+                    ? <img key={img} src={img} alt={`${pokemon.name}-${index}`}/>
+                      : <span></span>}
+                  </CSSTransition>)
+                )}
+              </TransitionGroup>
             </div>
           </Col>
           <Col xs={12} md={6}>

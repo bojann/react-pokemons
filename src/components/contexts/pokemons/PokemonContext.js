@@ -13,12 +13,13 @@ export class PokemonContextProvider extends Component {
 
     this.state = {
       selectedItems: [],
-      handleMultiSelectPoke: this.handleMultiSelectPoke,
-      handleClickBtnCompare: this.handleClickBtnCompare
+      handleClickAddPokemon: this.handleClickAddPokemon,
+      handleClickBtnCompare: this.handleClickBtnCompare,
+      handleClickRemovePokemon: this.handleClickRemovePokemon
     };
   }
 
-  handleMultiSelectPoke = ev => {
+  handleClickAddPokemon = ev => {
     ev.persist();
 
     if (this.state.selectedItems.length > POKE_MAX_ITEM_LIMIT - 1) {
@@ -33,6 +34,16 @@ export class PokemonContextProvider extends Component {
       };
     });
   };
+
+  handleClickRemovePokemon = (ev) => {
+    const removedItemText = ev.target.value;
+    console.log("%c  BA :********* ","background: orange;", ev);
+    const newSelectedItemList = this.state.selectedItems.filter((item) => item !== removedItemText)
+    
+    this.setState(() => {
+      return {selectedItems: newSelectedItemList}
+    })
+  }
 
   handleClickBtnCompare = () => {
     navigate("pokemon/compare");

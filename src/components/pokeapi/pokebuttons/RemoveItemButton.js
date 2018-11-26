@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+
 import CustomButton from "components/shared/buttons/CustomButton";
 
 class RemoveItemButton extends Component {
@@ -6,20 +7,17 @@ class RemoveItemButton extends Component {
     className: "remove-button",
     bsStyle: "danger",
     bsSize: "small",
-    isDisabled: true
+    isDisabled: false
   };
-
-  handleClickBtnRemove = ev => {
-    console.log("%c  BA :********* ", "background: orange;", ev.target);
-  };
-
+  
   render() {
     const dataIdName = this.props["data-idname"];
+    const { handleClickRemovePokemon } = this.props;
     return (
       <CustomButton
         {...this.state}
         data-idname={dataIdName}
-        handleClickEvent={this.handleClickBtnRemove}
+        handleClickEvent={handleClickRemovePokemon}
       >
         Remove Poke
       </CustomButton>

@@ -4,4 +4,31 @@
     border-radius: 100%;
     margin: 10px;
   }
+
+  .item-fadein-enter {
+    opacity: 0.7;
+    background: transparent;
+  }
+  .item-fadein-enter-active {
+    opacity: 1;
+    -webkit-transition: opacity 500ms linear;
+    -moz-transition: opacity 500ms linear;
+    -ms-transition: opacity 500ms linear;
+    -o-transition: opacity 500ms linear;
+    transition: opacity 500ms linear;
+    background: #8b4e2e;
+  }
+  .item-fadein-exit {
+    opacity: 1;
+  }
+
+  .item-fadein-exit-active {
+    opacity: 0.7;
+    -webkit-transition: opacity 500ms linear;
+    -moz-transition: opacity 500ms linear;
+    -ms-transition: opacity 500ms linear;
+    -o-transition: opacity 500ms linear;
+    transition: opacity 500ms linear;
+    background: #8b4e2e;
+  }
 }

@@ -28,20 +28,20 @@ const LoadablePokeCompare = Loadable({
 class App extends Component {
   render() {
     return (
-      <LoginContextProvider>
-        <PokemonContextProvider>
-          <ReachRouter>
-            <Dashboard path="/">
-              <LoadablePokeHome path="pokemons" />
-              <LoadablePokeDetail path="pokemon/:id" />
-              <LoadablePokeCompare path="pokemon/compare" />
-              <BlizzardHome path="blizzard" />
-              <NoMatchPage default />
-            </Dashboard>
-            <Login path="login" />
-          </ReachRouter>
-        </PokemonContextProvider>
-      </LoginContextProvider>
+        <LoginContextProvider>
+          <PokemonContextProvider>
+              <ReachRouter>
+                <Dashboard path="/">
+                  <LoadablePokeHome path="pokemons" />
+                  <LoadablePokeDetail path="pokemon/:id" />
+                  <LoadablePokeCompare path="pokemon/compare" />
+                  <BlizzardHome path="blizzard" />
+                  <NoMatchPage default />
+                </Dashboard>
+                <Login path="login" />
+              </ReachRouter>
+          </PokemonContextProvider>
+        </LoginContextProvider>
     );
   }
 }

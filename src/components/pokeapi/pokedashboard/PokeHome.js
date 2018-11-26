@@ -87,7 +87,7 @@ class PokeHome extends PureComponent {
     );
   };
 
-  handleClickPokemon = ev => {
+  handleClickPokemon = (ev) => {
     const selectedPoke = ev.currentTarget.dataset.idname;
     this.getPokeData(selectedPoke);
   };
@@ -95,7 +95,8 @@ class PokeHome extends PureComponent {
   render() {
     const {
       handleClickBtnCompare,
-      handleMultiSelectPoke,
+      handleClickAddPokemon,
+      handleClickRemovePokemon,
       selectedItems
     } = this.props;
 
@@ -111,14 +112,15 @@ class PokeHome extends PureComponent {
           handleClickBtnCompare={handleClickBtnCompare}
           selectMultiplePokemonFlag={this.state.selectMultiplePokemonFlag}
         />
-        <ListGroup>
-          <PokeItems
-            handleMultiSelectPoke={handleMultiSelectPoke}
-            selectMultiplePokemonFlag={this.state.selectMultiplePokemonFlag}
-            pokemons={this.state.filteredPokeResponse}
-            handleClickPokemon={this.handleClickPokemon}
-          />
-        </ListGroup>
+          <ListGroup>
+            <PokeItems
+              handleClickAddPokemon={handleClickAddPokemon}
+              handleClickRemovePokemon={handleClickRemovePokemon}
+              selectMultiplePokemonFlag={this.state.selectMultiplePokemonFlag}
+              pokemons={this.state.filteredPokeResponse}
+              handleClickPokemon={this.handleClickPokemon}
+            />
+          </ListGroup>
       </>
     );
   }
@@ -126,7 +128,8 @@ class PokeHome extends PureComponent {
 
 PokeHome.propTypes = {
   handleClickBtnCompare: PropTypes.func,
-  handleMultiSelectPoke: PropTypes.func
+  handleClickAddPokemon: PropTypes.func,
+  handleClickRemovePokemon: PropTypes.func,
 };
 
 export default withAuth(withSelectedPokemons(PokeHome));
