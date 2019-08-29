@@ -2,7 +2,7 @@ import axios from "axios";
 
 export function fetchPokeData({ path = "pokemon", selectedPoke = "" } = {}) {
   const POKEMON_BASE_PATH = "https://pokeapi.co/api/v2/";
-  const URL = `${POKEMON_BASE_PATH}${path}/${selectedPoke}/`;
+  const URL = `${POKEMON_BASE_PATH}${path}/${selectedPoke}`;
 
   return axios
     .get(URL)
