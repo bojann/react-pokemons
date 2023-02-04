@@ -11,7 +11,7 @@
     "formik": "^2.0.0",
     "history": "^4.7.2",
     "lodash": "^4.17.21",
-    "prop-types": "^15.6.2",
+    "prop-types": "^15.8.1",
     "react": "^16.6.0",
     "react-bootstrap": "^0.32.4",
     "react-css-transition": "^0.7.4",
